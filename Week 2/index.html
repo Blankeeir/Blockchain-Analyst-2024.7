@@ -1,0 +1,84 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<w3m-core-button></w3m-core-button><br><br>
+<span>Owners (',')</span><br><input id="owners" /><br>
+<span>Threshold</span><br><input id="threshold" value="1" type="number" min="1" /><br>
+<span>SaltNonce</span><br><input id="salt" value="0" type="number" min="0" /><br>
+<button id="getAddress">GetAddress</button>
+<button id="create1">Create By Wallet</button>
+<button id="create2">Create By RawTx</button><br>
+<div id="proxyAddress"></div>
+<span>ProxyNonce</span><br><input id="proxyNonce" value="0" type="number" /><br>
+<button id="getNonce">GetNonce</button><br>
+<div id="core">
+    <span>To</span><br><input id="to" /><br>
+    <span>Value</span><br><input id="value" value="0" /><br>
+    <span>Data</span><br><input id="data" value="0x" /><br>
+    <button id="sign">Sign</button>
+    <button id="tools">Tools</button><br>
+</div>
+<div id="more">
+    <span>TokenAddress</span><br><input id="tokenAddress" /><br>
+    <span>TokenTo</span><br><input id="tokenTo" /><br>
+    <span>TokenValue</span><br><input id="tokenValue" value="0" /><br>
+    <button id="sendToken">SendToken</button>
+</div>
+<div id="signatures">
+    <span>Signatures</span><br>
+    <div id="signRecord"></div>
+    <input /><br>
+    <button id="execute1">Execute By Wallet</button>
+    <button id="execute2">Execute By RawTx</button>
+</div>
+<textarea id="txn" rows="6"></textarea><br>
+<span>RPC</span><br><input id="rpc"><br>
+<span>SimulateURL</span><br><input id="simulateUrl"><br>
+<button id="submit1">Submit By Wallet</button>
+<button id="submit2">Submit By RPC</button>
+<button id="simulate">Simulate</button>
+<button id="qrcode">QRcode</button>
+<div id="result"></div>
+<div id="img"></div>
+<script defer src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<script type="module">
+    document.head.append(Object.assign(document.createElement('style'), { textContent: `div,input,span,textarea{overflow-wrap:break-word;width:512px;max-width:100%;margin:3px 0} button{margin:3px 0} #more{display:none}` }))
+    Object.assign(window, {
+        BUF: _ => new Uint8Array((_.startsWith("0x") ? _.slice(2) : _).match(/.{1,2}/g).map(_ => parseInt(_, 16))),
+        IDV: (id, v) => v === void 0 ? document.getElementById(id).value : (document.getElementById(id).value = v),
+        IDT: (id, t) => t === void 0 ? document.getElementById(id).innerText : (document.getElementById(id).innerText = t),
+        CLK: (id, f) => document.getElementById(id).onclick = f,
+        HEX: (_) => "0x" + _.toString(16),
+        Buffer: {}, process: { env: {} }, global: {}
+    })
+    import { ethers } from 'https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.2/ethers.min.js'
+    import { EthereumClient, w3mConnectors, w3mProvider, WagmiCore, WagmiCoreChains } from "https://unpkg.com/@web3modal/ethereum@2.7.1"
+    import { Web3Modal } from "https://unpkg.com/@web3modal/html@2.7.1"
+    const [infuraId, projectId] = ["3fe9a51815de471c89a3a785796df184", "8d4b65a403204449b830fe65ce9648a7"]
+    const [rpc, simulateUrl] = ["https://neoxt4seed1.ngd.network", "https://eth-sepolia.g.alchemy.com/v2/WvFtpDoitdcFvITGGBk_BHN9eWqgonWS"]
+    const [SafeProxyFactory, SafeL2, FallbackHandler, ZRO] = ["0xa6B71E26C5e0845f74c812102Ca7114b6a896AB2", "0x3E5c63644E683549055b9Be8653de26E0B4CD36E", "0xf48f2B2d2a534e402487b3ee7C18c33Aec0Fe5e4", ethers.ZeroAddress]
+    const proxyCreationCode = "0x608060405234801561001057600080fd5b506040516101e63803806101e68339818101604052602081101561003357600080fd5b8101908080519060200190929190505050600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614156100ca576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001806101c46022913960400191505060405180910390fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505060ab806101196000396000f3fe608060405273ffffffffffffffffffffffffffffffffffffffff600054167fa619486e0000000000000000000000000000000000000000000000000000000060003514156050578060005260206000f35b3660008037600080366000845af43d6000803e60008114156070573d6000fd5b3d6000f3fea2646970667358221220d1429297349653a4918076d650332de1a1068c5f3e07c5c82360c277770b955264736f6c63430007060033496e76616c69642073696e676c65746f6e20616464726573732070726f7669646564"
+    const ABI = ["function setup(address[],uint256,address,bytes,address,address,uint256,address)", "function execTransaction(address,uint256,bytes,uint8,uint256,uint256,uint256,address,address,bytes)", "function createProxyWithNonce(address,bytes,uint256)", "function transfer(address,uint256)", "function nonce() view returns (uint256)"]
+    const chains = [{ name: "NeoxT4", network: "neox", id: 12227332, rpcUrls: { default: { http: [rpc] } }, nativeCurrency: { decimals: 18, name: "GAS", symbol: "GAS" } }, WagmiCoreChains.mainnet, WagmiCoreChains.sepolia]
+    const initializer = () => BUF(new ethers.Interface(ABI).encodeFunctionData('setup', [IDV("owners").split(","), IDV("threshold"), ZRO, "0x", FallbackHandler, ZRO, 0, ZRO]))
+    const calcProxyAddress = () => "0x" + ethers.keccak256(new Uint8Array([BUF("ff"), BUF(SafeProxyFactory), BUF(ethers.keccak256(BUF(ethers.solidityPacked(["bytes32", "uint256"], [ethers.keccak256(initializer()), BigInt(IDV("salt"))])))), BUF(ethers.keccak256(BUF(ethers.solidityPacked(["bytes", "uint256"], [proxyCreationCode, BigInt(SafeL2)]))))].reduce((a, v) => a.concat(...v), []))).slice(-40)
+    const genE7T = () => ([{ chainId: WagmiCore.getNetwork().chain.id, verifyingContract: calcProxyAddress() }, { SafeTx: ["to", "value", "data", "operation", "safeTxGas", "baseGas", "gasPrice", "gasToken", "refundReceiver", "nonce"].map((name, i) => ({ name, type: ["address", "uint256", "bytes", "uint8", "uint256", "uint256", "uint256", "address", "address", "uint256"][i] })) }, { to: IDV("to"), value: IDV("value"), data: IDV("data"), operation: 0, safeTxGas: 0, baseGas: 0, gasPrice: 0, gasToken: ZRO, refundReceiver: ZRO, nonce: IDV("proxyNonce") }])
+    const sortSigs = () => ((s, e) => IDV("owners").split(",").sort((a, b) => (BigInt(a) < BigInt(b) ? -1 : 1)).flatMap((o, i) => (i = s.findIndex(_ => ethers.verifyTypedData(...e, _) === o)) >= 0 ? [s.splice(i, 1)[0].slice(2)] : []))(new Array(...document.querySelectorAll('div#signatures input')).map(({ value: _ }) => _.startsWith("0x") ? _ : "0x" + _), genE7T())
+    new Web3Modal({ projectId, chainImages: [12227332, 11155111].reduce((r, c) => ({ ...r, [c]: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" }), {}) }, new EthereumClient(WagmiCore.createConfig({ autoConnect: true, connectors: w3mConnectors({ chains, version: 2, projectId }), publicClient: WagmiCore.configureChains(chains, [w3mProvider({ projectId, chains })]).publicClient }), chains))
+    document.addEventListener("DOMContentLoaded", () => {
+        ["rpc", "simulateUrl"].forEach((_) => IDV(_, eval(_)))
+        WagmiCore.watchAccount(_ => _.isConnected && WagmiCore.getWalletClient().then(_ => new ethers.BrowserProvider(_).getSigner()).then(_ => global.signer = _))
+        CLK("getAddress", () => new Promise(_ => _(calcProxyAddress())).then(_ => IDT("proxyAddress", _)).catch(_ => IDT("proxyAddress", "INVALID")))
+        CLK("create1", () => new ethers.Contract(SafeProxyFactory, ABI, WagmiCore)['createProxyWithNonce'](SafeL2, initializer(), BigInt(IDV("salt"))).then(tx => (prompt("Transaction sent: ", tx.hash), console.log(tx.hash))).catch(console.log))
+        CLK("create2", () => IDV("txn", ethers.Transaction.from({ to: SafeProxyFactory, data: new ethers.Interface(ABI).encodeFunctionData('createProxyWithNonce', [SafeL2, initializer(), BigInt(IDV("salt"))]) }).unsignedSerialized))
+        CLK("getNonce", () => new ethers.Contract(calcProxyAddress(), ABI, global.signer).nonce().then(_ => alert("nonce: " + IDV("proxyNonce", _))).catch(_ => console.log(IDV("proxyNonce", -1), _)))
+        CLK("sign", () => global.signer.signTypedData(...genE7T()).then(_ => document.getElementById("signRecord").innerText = _.slice(2)).catch(console.log))
+        CLK("tools", () => (document.getElementById("core").style.display = 'none', document.getElementById("more").style.display = 'block'))
+        CLK("sendToken", () => new Promise(_ => _(new ethers.Interface(ABI).encodeFunctionData('transfer', [IDV("tokenTo"), BigInt(IDV("tokenValue"))]))).then(_ => (IDV("to", IDV("tokenAddress")), IDV("data", _))).finally(_ => (document.getElementById("core").style.display = 'block', document.getElementById("more").style.display = 'none')).catch(console.log))
+        CLK("execute1", () => new ethers.Contract(calcProxyAddress(), ABI, WagmiCore)["execTransaction"](IDV("to"), IDV("value"), IDV("data"), 0, 0, 0, 0, ZRO, ZRO, "0x" + sortSigs().join("")).then(tx => (prompt("Transaction sent: ", tx.hash), console.log(tx.hash))).catch(console.log))
+        CLK("execute2", () => IDV("txn", ethers.Transaction.from({ to: calcProxyAddress(), data: new ethers.Interface(ABI).encodeFunctionData('execTransaction', [IDV("to"), IDV("value"), IDV("data"), 0, 0, 0, 0, ZRO, ZRO, "0x" + sortSigs().join("")]) }).unsignedSerialized))
+        CLK("submit1", () => Promise.resolve(ethers.Transaction.from(IDV("txn"))).then(({ to, data, value }) => WagmiCore.sendTransaction({ to, data, value })).then(tx => (prompt("Transaction sent: ", tx.hash), console.log(tx.hash))).catch(console.log))
+        CLK("submit2", () => comfrom("Broadcast this signed transation?") && new ethers.JsonRpcProvider(IDV("rpc")).send('eth_sendRawTransaction', [IDV("txn")]).then(_ => confirm(_) && console.log(_)))
+        CLK("simulate", () => Promise.resolve(ethers.Transaction.from(IDV("txn"))).then(({ from, to, data, value }) => fetch(IDV("simulateUrl"), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: 1, jsonrpc: "2.0", method: "alchemy_simulateAssetChanges", params: [{ to, data, value: "0x" + value.toString(16), from: from ?? WagmiCore.getAccount().address }] }) })).then(response => response.json()).then(({ result, error }) => error ? alert(error) : IDT("result", JSON.stringify(result))).catch(error => console.error('Error:', error)))
+        CLK("qrcode", () => (document.getElementById("img").innerHTML = "") || (IDV("txn").match(new RegExp(`.{1,2048}`, 'g')) || []).forEach(_ => document.getElementById("img").appendChild(Object.assign(document.createElement('div'), { innerHTML: (qr => (qr.addData(_), qr.make(), qr.createImgTag(5, 5)))(qrcode(0, 'M')) }))))
+        document.getElementById("threshold").addEventListener('input', (e) => ((v) => v > 0 && (new Array(...document.querySelectorAll('div#signatures input')).forEach(_ => (_.nextElementSibling.remove(), _.remove())), new Array(v).fill(0).forEach(() => ["input", "br"].forEach(_ => document.getElementById("execute1").insertAdjacentElement("beforebegin", document.createElement(_))))))(Number(e.target.value)))
+    })
+</script>
