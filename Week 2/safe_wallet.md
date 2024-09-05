@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This report delves into the research and implementation details of the Safe Wallet, a widely used Ethereum-based multisignature wallet. The Safe Wallet is designed to enhance security and usability for managing digital assets and smart contracts. This report covers a comprehensive analysis of the Safe Wallet's architecture, its frontend and backend components, and the integration of cryptographic secret management using external libraries like **Secrets** for Rust developers. 
+Here the research delvse into the research and implementation details of the Safe Wallet, a widely used Ethereum-based multisignature wallet. The Safe Wallet is designed to enhance security and usability for managing digital assets and smart contracts. This report covers a comprehensive analysis of the Safe Wallet's architecture, its frontend and backend components, and the integration of cryptographic secret management using external libraries like **Secrets** for Rust developers. 
 
 ### Reference Links Summary
 
@@ -63,4 +63,3 @@ The Safe Wallet is a robust, secure, and user-friendly multisignature wallet sol
 3. **Safe Wallet Documentation**: [Safe wallet docs](https://docs.safe.global/home/what-is-safe)
 4. **Secrets Library for Rust**: [Secrets GitHub repo](https://github.com/stouset/secrets.git) 
 
-These references provide further insights and technical specifications essential for the implementation and continuous improvement of the Safe Wallet.

@@ -138,5 +138,3 @@ Witness Encryption presents a novel approach to cryptographic security by tying 
 2. **Multilinear Maps and Applications**: [Journal of Cryptographic Engineering](https://link.springer.com/journal/13389)
 3. **Indistinguishability Obfuscation**: [Proceedings of the ACM Conference on Computer and Communications Security](https://dl.acm.org/doi/proceedings/10.1145/series.ccs)
 4. **Quantum-Resistant Cryptography**: [NIST Post-Quantum Cryptography Project](https://csrc.nist.gov/Projects/post-quantum-cryptography)
-
-These references provide in-depth discussions on the theoretical foundations, practical challenges, and future directions of Witness Encryption in the context of modern cryptography and blockchain applications.
