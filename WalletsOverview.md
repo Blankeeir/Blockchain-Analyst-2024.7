@@ -229,6 +229,7 @@ These wallets utilize cryptographic algorithms designed to be secure against qua
 - **Level of Security**: +++++
 
 #### b. **OQS Wallet**
+
 - **Encryption**: Uses quantum-resistant algorithms like Kyber, Dilithium, and BIKE from the Open Quantum Safe Project.
 - **Storage**: Secure storage with quantum-safe encryption.
 - **Decryption**: Uses post-quantum cryptographic methods for decryption.
