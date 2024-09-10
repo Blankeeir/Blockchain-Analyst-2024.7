@@ -1,37 +1,33 @@
-# NeoBurger Research
+# Technical Report on NeoBurger
 
 ## Introduction
+NeoBurger introduces a sophisticated approach to maximizing the utility and rewards associated with NEO token staking through governance, using the NEP-17 token, **bNEO**. bNEO is designed as a divisible counterpart to NEO, with 8 decimals, and functions as a liquidity and reward optimization tool. This report outlines the technical components of NeoBurger, including its smart contract architecture, reward mechanisms, and security provisions. The emphasis is placed on the **code-level** operations of the platform, integrating insights from the project’s source code and advanced governance strategies.
+
 ![Neo Burger Overview](image.png)
 
 
-
 ## Reference links
-[NeoBurger Websiste](https://neoburger.io/en/home/)
-[NeoBurger Github Repo](https://github.com/neoburger)
+* [NeoBurger Websiste](https://neoburger.io/en/home/)
+
+* [NeoBurger Github Repo](https://github.com/neoburger)
 
 
-### **Technical Report on NeoBurger: A Deep Dive for Blockchain Developers**
-
-#### **Introduction**
-NeoBurger introduces a sophisticated approach to maximizing the utility and rewards associated with NEO token staking through governance, using the NEP-17 token, **bNEO**. bNEO is designed as a divisible counterpart to NEO, with 8 decimals, and functions as a liquidity and reward optimization tool. This report outlines the technical components of NeoBurger, including its smart contract architecture, reward mechanisms, and security provisions. The emphasis is placed on the **code-level** operations of the platform, integrating insights from the project’s source code and advanced governance strategies.
-
----
-
-### **Smart Contract Architecture**
+## Technical Details
+### Smart Contract Architecture
 NeoBurger’s core functionality revolves around the **BurgerNEO** contract, implemented using the NEP-17 token standard. Below, the most critical sections of the code are explored:
 
-1. Token Logic**:
-* Decimals and Symbol**:
+1. **Token Logic**
+* Decimals and Symbol
      ```csharp
      public override byte Decimals() => 8;
      public override string Symbol() => "bNEO";
      ```
      The token follows the NEP-17 standard, with 8 decimals to provide greater flexibility for users when transacting fractions of NEO, a crucial feature given NEO's indivisibility.
 
-2. Minting and Burning Mechanism**:
+2. **Minting and Burning Mechanism**
    The smart contract allows users to mint **bNEO** by transferring **NEO** to the contract address. The minting mechanism adjusts bNEO balances according to the input NEO amount, and the corresponding GAS rewards are optimized through NeoBurger’s **strategic voting** mechanism.
 
-* Minting Process**:
+* Minting Process
      ```csharp
      if (Runtime.CallingScriptHash == NEO.Hash)
      {
@@ -42,7 +38,7 @@ NeoBurger’s core functionality revolves around the **BurgerNEO** contract, imp
 
      When users send NEO to the contract, it invokes a mint operation, where the contract transfers the user's NEO to one of NeoBurger’s **agents**, and mints the equivalent amount of bNEO, maintaining a 1:1 ratio.
 
-* Burning Process**:
+* Burning Process
      ```csharp
      if (Runtime.CallingScriptHash == GAS.Hash && amount > 0 && data is null)
      {
@@ -73,9 +69,9 @@ NeoBurger’s core functionality revolves around the **BurgerNEO** contract, imp
 ### **Governance Mechanism**
 NeoBurger’s governance model hinges on the participation of its agents in **NEO Governance**. **bNEO holders** indirectly delegate their voting power to NeoBurger, which optimizes GAS rewards based on the voting strategy. This strategy dynamically adjusts voting positions, aiming to maximize the GAS return for bNEO holders.
 
-- **Voting Strategy and Reward Calculation**:
-   - NeoBurger utilizes multiple agents (BurgerAgent0, BurgerAgent1, etc.), and distributes users’ NEO across these agents to participate in voting.
-   - The reward to each user is calculated using the **Reward Per Token Stored (RPS)** value:
+1. **Voting Strategy and Reward Calculation**:
+- NeoBurger utilizes multiple agents (BurgerAgent0, BurgerAgent1, etc.), and distributes users’ NEO across these agents to participate in voting.
+- The reward to each user is calculated using the **Reward Per Token Stored (RPS)** value:
      ```csharp
      BigInteger reward = balance * (rps - paid) / 100000000 + reward;
      new StorageMap(Storage.CurrentContext, PREFIXREWARD).Put(account, earned);
@@ -87,7 +83,7 @@ NeoBurger’s governance model hinges on the participation of its agents in **NE
 
 ### **Fee Structure**
 
-- **Performance Fee**:
+1. **Performance Fee**:
   NeoBurger charges a **1% performance fee** on GAS rewards, which is automatically sent to the project’s **treasury**. This is essential for the project’s sustainability and incentivizes the strategic adjustment of voting positions.
 
   ```csharp
@@ -97,13 +93,8 @@ NeoBurger’s governance model hinges on the participation of its agents in **NE
       ExecutionEngine.Assert(GAS.Transfer(Runtime.ExecutingScriptHash, Owner(), amount));
   }
   ```
-
-- **Withdrawal Fee**:
-  To prevent malicious behavior such as **GAS farming**, NeoBurger imposes a **0.001 GAS fee per NEO** withdrawn. This fee discourages users from depositing large amounts of NEO before reward distributions and immediately withdrawing after. The formula that governs the profit calculation for such an exploit is:
-
-  \[
-  P = G \cdot \frac{X}{X + T} - X \cdot F \cdot \frac{T}{X + T}
-  \]
+2. **Withdrawal Fee**:
+  To prevent malicious behavior such as **GAS farming**, NeoBurger imposes a **0.001 GAS fee per NEO** withdrawn. This fee discourages users from depositing large amounts of NEO before reward distributions and immediately withdrawing after. The formula that governs the profit calculation for such an exploit is: $P = G \cdot \frac{X}{X + T} - X \cdot F \cdot \frac{T}{X + T}$
 
   Where:
   - \( P \) is the profit,
