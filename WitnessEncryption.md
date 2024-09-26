@@ -1,4 +1,40 @@
-# Week 2: Witness Encryption
+# Witness Encryption
+
+## Table of Contents
+- [Witness Encryption](#witness-encryption)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Technical Structure of Witness Encryption](#technical-structure-of-witness-encryption)
+    - [1. Definition and Mechanism](#1-definition-and-mechanism)
+      - [Formal Description](#formal-description)
+      - [Encryption Process](#encryption-process)
+    - [2. Underlying Cryptographic Constructs](#2-underlying-cryptographic-constructs)
+      - [Multilinear Maps](#multilinear-maps)
+      - [Indistinguishability Obfuscation (iO)](#indistinguishability-obfuscation-io)
+      - [Additional Constructs](#additional-constructs)
+    - [3. Practical Witness Encryption and Applications](#3-practical-witness-encryption-and-applications)
+      - [Sample Applications](#sample-applications)
+      - [Demo Code and Sample Solutions](#demo-code-and-sample-solutions)
+    - [4. Optimization Strategies](#4-optimization-strategies)
+    - [5. Challenges and Potential Improvements](#5-challenges-and-potential-improvements)
+  - [Applications in Blockchain and Cryptography](#applications-in-blockchain-and-cryptography)
+    - [1. Smart Contracts](#1-smart-contracts)
+    - [2. Secure Voting Systems](#2-secure-voting-systems)
+    - [3. Threshold Encryption](#3-threshold-encryption)
+    - [4. Access-Controlled Data Storage](#4-access-controlled-data-storage)
+  - [Relation to Symmetric and Asymmetric Encryption](#relation-to-symmetric-and-asymmetric-encryption)
+    - [Symmetric Encryption as a Special Case of WE](#symmetric-encryption-as-a-special-case-of-we)
+    - [Asymmetric Encryption as a Special Case of WE](#asymmetric-encryption-as-a-special-case-of-we)
+    - [Unified Symbol System for WE, Symmetric, and Asymmetric Encryption](#unified-symbol-system-for-we-symmetric-and-asymmetric-encryption)
+  - [Author Analysis](#author-analysis)
+    - [1. **Schwinn Saereesitthipitak, Stanford University**](#1-schwinn-saereesitthipitak-stanford-university)
+    - [2. **Dionysis Zindros, Stanford University**](#2-dionysis-zindros-stanford-university)
+    - [3. **Sanjam Garg, UCLA**](#3-sanjam-garg-ucla)
+    - [4. **Craig Gentry, IBM Watson**](#4-craig-gentry-ibm-watson)
+    - [5. **Amit Sahai, UCLA**](#5-amit-sahai-ucla)
+    - [6. **Brent Waters, U.T. Austin**](#6-brent-waters-ut-austin)
+    - [Summary of Sample Applications](#summary-of-sample-applications)
+    - [Relation to Symmetric and Asymmetric Encryption](#relation-to-symmetric-and-asymmetric-encryption-1)
 
 ## Introduction
 
@@ -271,6 +307,8 @@ By adopting a symbolic framework, we can express symmetric and asymmetric encryp
 
 This unified representation underscores how traditional encryption schemes can be interpreted as specific instances of Witness Encryption, thereby broadening the applicability and theoretical understanding of encryption methodologies.
 
+## Author Analysis
+
 Certainly! Below is an analysis of the listed authors, including their academic backgrounds and notable research contributions. Where specific information is not available or certain, I have indicated accordingly. For the most accurate and up-to-date information, please refer to their official university profiles, personal websites, or authoritative databases like [Google Scholar](https://scholar.google.com/) and [DBLP](https://dblp.org/).
 
 ---
@@ -278,7 +316,7 @@ Certainly! Below is an analysis of the listed authors, including their academic 
 ### 1. **Schwinn Saereesitthipitak, Stanford University**
 
 **Background and Research:**
-Master of Comp Science at Stanform University
+Master of Comp Science at Stanford University
 
 ### 2. **Dionysis Zindros, Stanford University**
 
@@ -448,6 +486,4 @@ Witness Encryption can be viewed as a unifying framework that encompasses both s
 &\quad M = D(C, w) \quad \text{where } w \text{ is linked to } x \\
 \end{aligned}
 \]
-
- how traditional encryption schemes fit within the broader Witness Encryption framework, providing a unified perspective on different encryption methodologies.
 
