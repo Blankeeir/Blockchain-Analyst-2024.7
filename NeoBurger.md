@@ -127,10 +127,7 @@ NeoBurger employs a **strategist role** to manage voting and reward distribution
 
 ### **Conclusion**
 NeoBurger offers a highly technical and well-optimized solution for NEO holders, allowing them to maximize their GAS rewards through delegated governance participation. The smart contracts employ advanced NEP-17 token logic, and security measures such as **whitelisting** and **withdrawal fees** are implemented to ensure the integrity and profitability of the system. The strategic voting and redistribution mechanisms ensure that GAS rewards are optimized, and malicious behavior is mitigated through mathematical safeguards.
-
-This report provides all the necessary details for a senior blockchain developer to get started with NeoBurger, including key formulas, processes, and governance strategies. All related smart contract code is available in the [NeoBurger GitHub repository](https://github.com/neoburger/code.git). 
-
-For further customization and deployment, developers are encouraged to explore the codebase, adapt voting strategies, and engage in Neo governance via NeoBurger’s DAO framework.
+All related smart contract code is available in the [NeoBurger GitHub repository](https://github.com/neoburger/code.git). 
 
 
 
