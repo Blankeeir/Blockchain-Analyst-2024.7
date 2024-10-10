@@ -160,7 +160,7 @@ from slixmpp.exceptions import IqError, IqTimeout
 
 class SimpleXMPPClient(slixmpp.ClientXMPP):
     def __init__(self, jid, password, recipient, message):
-        super().__init__(jid, password)
+        super().__init__(jid, password) # slixmpp.client library initialized with a userID and password
 
         self.recipient = recipient
         self.message = message

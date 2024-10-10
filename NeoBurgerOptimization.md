@@ -1,5 +1,3 @@
-Certainly! Let's continue our deep dive into addressing the limitations of the current NeoBurger strategy with a highly technical and mathematically rigorous approach. We'll expand on the Integer Non-Linear Programming (INLP) solution, integrate comprehensive mathematical formulations into the implementation, and explore advanced optimization strategies. Additionally, we'll consider applying this model to NeoX.
-
 ## 1. Addressing the Limitations of the Current NeoBurger Strategy
 
 ### a. **Indivisibility of NEO Token**

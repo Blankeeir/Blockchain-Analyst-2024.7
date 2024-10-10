@@ -445,7 +445,7 @@ Witness Encryption is a versatile cryptographic tool that enables conditional ac
 **Sample Code and Practical Solutions:**
 The previously provided Python pseudo-code illustrates a simplified implementation of Witness Encryption, demonstrating how messages can be encrypted and decrypted based on the provision of valid witnesses. In real-world scenarios, this would involve sophisticated cryptographic primitives like multilinear maps and indistinguishability obfuscation to ensure security and functionality.
 
----
+
 
 ### Relation to Symmetric and Asymmetric Encryption
 
