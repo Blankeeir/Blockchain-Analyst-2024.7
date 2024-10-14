@@ -162,23 +162,23 @@ Recursive proofs require:
 1. **Expressible Verification Logic**: The proof verification algorithm must be representable within the proof system's circuit constraints.
 2. **Field Compatibility**: The cryptographic operations used in verification must be performable within the finite field of the circuit.
 
-Mathematically, if we have a proof \( \pi_i \) attesting to a statement \( S_i \), a recursive proof \( \pi \) attests that for all \( i \):
+Mathematically, if we have a proof $\pi_i$ attesting to a statement $S_i$, a recursive proof $\pi$ attests that for all $i$:
 
-\[
+$$
 \text{Verify}(\pi_i, S_i) = \text{True}
-\]
+$$
 
-This is encoded into a circuit \( C \) that verifies \( \pi_i \) within the proof \( \pi \).
+This is encoded into a circuit $C$ that verifies $\pi_i$ within the proof $\pi$.
 
 ### Elliptic Curve Cycles
 
 To verify proofs within proofs, the elliptic curves used in the proof system must be compatible.
 
-**Definition**: An elliptic curve cycle is a pair of curves \( (E_1, E_2) \) where:
+**Definition**: An elliptic curve cycle is a pair of curves $(E_1, E_2)$ where:
 
-- \( E_1 \) is defined over \( \mathbb{F}_{q_1} \) with order \( r_1 \)
-- \( E_2 \) is defined over \( \mathbb{F}_{q_2} \) with order \( r_2 \)
-- \( q_1 = r_2 \) and \( q_2 = r_1 \)
+- $E_1$ is defined over $\mathbb{F}_{q_1}$ with order $r_1$
+- $E_2$ is defined over $\mathbb{F}_{q_2}$ with order $r_2$
+- $q_1 = r_2$ and $q_2 = r_1$
 
 **Example**:
 
@@ -186,7 +186,7 @@ To verify proofs within proofs, the elliptic curves used in the proof system mus
 
 **Usage**:
 
-- Allows for the proof system on \( E_1 \) to verify proofs that operate on \( E_2 \), enabling recursion.
+- Allows for the proof system on $E_1$ to verify proofs that operate on $E_2$, enabling recursion.
 
 ---
 
