@@ -1,8 +1,8 @@
-# Recursive Zero-Knowledge Proofs: An In-Depth Technical Guide
+# Recursive Zero-Knowledge Proofs
 
 ## Table of Contents
 
-- [Recursive Zero-Knowledge Proofs: An In-Depth Technical Guide](#recursive-zero-knowledge-proofs-an-in-depth-technical-guide)
+- [Recursive Zero-Knowledge Proofs](#recursive-zero-knowledge-proofs)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Motivation](#motivation)
@@ -15,7 +15,7 @@
     - [Arithmetic Circuits and R1CS](#arithmetic-circuits-and-r1cs)
     - [Elliptic Curves and Pairings](#elliptic-curves-and-pairings)
     - [Polynomial Commitments](#polynomial-commitments)
-  - [Recursive Zero-Knowledge Proofs](#recursive-zero-knowledge-proofs)
+  - [Recursive Zero-Knowledge Proofs](#recursive-zero-knowledge-proofs-1)
     - [Definition](#definition)
     - [Theoretical Framework](#theoretical-framework)
     - [Elliptic Curve Cycles](#elliptic-curve-cycles)
@@ -102,50 +102,50 @@ Zero-Knowledge Proofs allow a prover to convince a verifier that a statement is 
 
 ### Arithmetic Circuits and R1CS
 
-An **Arithmetic Circuit** computes a function over a finite field \( \mathbb{F}_q \). It consists of addition and multiplication gates.
+An **Arithmetic Circuit** computes a function over a finite field $\mathbb{F}_q$. It consists of addition and multiplication gates.
 
 **Rank-1 Constraint System (R1CS)**:
 
-An R1CS instance consists of three matrices \( A \), \( B \), and \( C \), and vectors \( s \) (variables) satisfying:
+An R1CS instance consists of three matrices $A$, $B$, and $C$, and vectors $s$ (variables) satisfying:
 
-\[
+$$
 \forall i, \quad (A_i \cdot s) \times (B_i \cdot s) = C_i \cdot s
-\]
+$$
 
-The prover's goal is to find \( s \) such that the above equation holds.
+The prover's goal is to find $s$ such that the above equation holds.
 
 ### Elliptic Curves and Pairings
 
 **Elliptic Curves** are defined over finite fields and are used in cryptography due to their hardness assumptions.
 
-An elliptic curve \( E \) over a field \( \mathbb{F}_q \) is given by:
+An elliptic curve $E$ over a field $\mathbb{F}_q$ is given by:
 
-\[
+$$
 E: y^2 = x^3 + ax + b
-\]
+$$
 
 **Pairings** are bilinear maps:
 
-\[
+$$
 e: G_1 \times G_2 \rightarrow G_T
-\]
+$$
 
-Where \( G_1 \), \( G_2 \), and \( G_T \) are groups of prime order \( r \).
+Where $G_1$, $G_2$, and $G_T$ are groups of prime order $r$.
 
 **Properties**:
 
-- **Bilinearity**: \( e(aP, bQ) = e(P, Q)^{ab} \)
-- **Non-Degeneracy**: \( e(P, Q) \neq 1 \) if \( P \) and \( Q \) are non-zero.
+- **Bilinearity**: $e(aP, bQ) = e(P, Q)^{ab}$
+- **Non-Degeneracy**: $e(P, Q) \neq 1$ if $P$ and $Q$ are non-zero.
 
 ### Polynomial Commitments
 
-Polynomial commitments allow a prover to commit to a polynomial \( p(x) \) and later reveal evaluations \( p(z) \) without revealing the polynomial itself.
+Polynomial commitments allow a prover to commit to a polynomial $p(x)$ and later reveal evaluations $p(z)$ without revealing the polynomial itself.
 
 **Kate-Zaverucha-Goldberg (KZG) Commitment**:
 
-- **Setup**: Requires a trusted setup to generate \( \{ g^{s^i} \} \).
-- **Commitment**: \( C = g^{p(s)} \)
-- **Opening**: Provide \( p(z) \) and a proof \( \pi = \frac{p(s) - p(z)}{s - z} \)
+- **Setup**: Requires a trusted setup to generate $\{ g^{s^i} \}$.
+- **Commitment**: $C = g^{p(s)}$
+- **Opening**: Provide $p(z)$ and a proof $\pi = \frac{p(s) - p(z)}{s - z}$
 
 ---
 
