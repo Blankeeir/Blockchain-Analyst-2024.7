@@ -196,7 +196,7 @@ To verify proofs within proofs, the elliptic curves used in the proof system mus
 
 **Steps**:
 
-1. **Define the Verification Algorithm**: Convert the proof verification steps into arithmetic operations over \( \mathbb{F}_q \).
+1. **Define the Verification Algorithm**: Convert the proof verification steps into arithmetic operations over $\( \mathbb{F}_q \)$.
 2. **Implement Field Arithmetic**: Ensure all cryptographic operations (e.g., elliptic curve addition, scalar multiplication) are implementable within the circuit constraints.
 3. **Optimize the Circuit**: Minimize constraints to improve efficiency.
 
