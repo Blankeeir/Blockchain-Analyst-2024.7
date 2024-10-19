@@ -1,0 +1,10 @@
+/Users/emma/Library/CloudStorage/GoogleDrive-xusiyi2005@gmail.com/My Drive/Internships/Blockchain Analyst 2024.7/ProjectDemos/RecursiveZkpForFactorization/bellman_rust/target/debug/deps/libquote-394be9df24d1663d.rmeta: /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/lib.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/tokens.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/to_tokens.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/ident.rs
+
+/Users/emma/Library/CloudStorage/GoogleDrive-xusiyi2005@gmail.com/My Drive/Internships/Blockchain Analyst 2024.7/ProjectDemos/RecursiveZkpForFactorization/bellman_rust/target/debug/deps/libquote-394be9df24d1663d.rlib: /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/lib.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/tokens.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/to_tokens.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/ident.rs
+
+/Users/emma/Library/CloudStorage/GoogleDrive-xusiyi2005@gmail.com/My Drive/Internships/Blockchain Analyst 2024.7/ProjectDemos/RecursiveZkpForFactorization/bellman_rust/target/debug/deps/quote-394be9df24d1663d.d: /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/lib.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/tokens.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/to_tokens.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/ident.rs
+
+/Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/lib.rs:
+/Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/tokens.rs:
+/Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/to_tokens.rs:
+/Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/quote-0.3.15/src/ident.rs:
