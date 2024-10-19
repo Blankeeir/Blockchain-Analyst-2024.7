@@ -1,0 +1,10 @@
+/Users/emma/Library/CloudStorage/GoogleDrive-xusiyi2005@gmail.com/My Drive/Internships/Blockchain Analyst 2024.7/ProjectDemos/RecursiveZkpForFactorization/plonky_tryout_recursive/target/release/deps/liblog-3cfe4ce4dd5a2b71.rmeta: /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/lib.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/macros.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/serde.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/__private_api.rs
+
+/Users/emma/Library/CloudStorage/GoogleDrive-xusiyi2005@gmail.com/My Drive/Internships/Blockchain Analyst 2024.7/ProjectDemos/RecursiveZkpForFactorization/plonky_tryout_recursive/target/release/deps/liblog-3cfe4ce4dd5a2b71.rlib: /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/lib.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/macros.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/serde.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/__private_api.rs
+
+/Users/emma/Library/CloudStorage/GoogleDrive-xusiyi2005@gmail.com/My Drive/Internships/Blockchain Analyst 2024.7/ProjectDemos/RecursiveZkpForFactorization/plonky_tryout_recursive/target/release/deps/log-3cfe4ce4dd5a2b71.d: /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/lib.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/macros.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/serde.rs /Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/__private_api.rs
+
+/Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/lib.rs:
+/Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/macros.rs:
+/Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/serde.rs:
+/Users/emma/.cargo/registry/src/index.crates.io-6f17d22bba15001f/log-0.4.22/src/__private_api.rs:
