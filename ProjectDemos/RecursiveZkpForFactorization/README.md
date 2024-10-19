@@ -56,3 +56,7 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
 ### Recursive zk
 * Recursive Zero-knowledge proof system: [https://github.com/ChainSafe/recursive-zk-bridge]
+* lurk [https://github.com/argumentcomputer/lurk-beta.git]
+* zkCoin []
+* circuit pairing [https://github.com/nalinbhardwaj/circom-pairing.git]
+* 
