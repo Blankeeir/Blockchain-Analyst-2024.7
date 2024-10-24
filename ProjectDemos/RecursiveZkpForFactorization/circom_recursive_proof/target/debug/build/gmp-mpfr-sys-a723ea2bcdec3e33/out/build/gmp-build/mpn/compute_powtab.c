@@ -1,0 +1,1 @@
+../../gmp-src/mpn/generic/compute_powtab.c

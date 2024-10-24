@@ -1,0 +1,1 @@
+../../gmp-src/mpn/generic/pow_1.c

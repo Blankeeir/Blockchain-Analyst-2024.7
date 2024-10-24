@@ -1,0 +1,18 @@
+[package]
+name = "halo2_factorization_recursive"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ff = "0.12"  # Field arithmetic library
+group = "0.12"  # Group operations library
+rand = "0.8"  # Random number generation
+serde = { version = "1.0", features = ["derive"] }  # Serialization/deserialization
+serde_json = "1.0"
+
+# Use the crates.io version of halo2_proofs
+halo2_proofs = { version = "0.5", default-features = false, features = ["full-build"] }
+halo2curves = "0.5"
+
+# Add the halo2-axiom crate for recursion support
+halo2-axiom = { git = "https://github.com/axiom-crypto/halo2-axiom.git", package = "halo2-axiom" }
