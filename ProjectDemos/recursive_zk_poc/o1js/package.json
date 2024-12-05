@@ -1,0 +1,19 @@
+{
+  "name": "o1js",
+  "version": "1.0.0",
+  "main": "main.ts",
+  "scripts": {
+    "test": "npm test",
+    "build": "tsc",
+    "demo": "ts-node demo.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^22.10.1",
+    "o1js": "^2.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
